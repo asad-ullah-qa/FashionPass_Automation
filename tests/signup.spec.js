@@ -1,36 +1,41 @@
-import { test, expect } from '../fixtures/baseTest'
-import { signUpData } from '../Test-Data/Data'
+import { test } from '../fixtures/baseTest'
+import { UserDetails } from '../Test-Data/Data'
 
 test('User Signup Flow', async ({ page, homePage, emailPage, profilePage, membershipPage }) => {
 
-await page.goto('/')
+    // Open home Page , close promotional popup , Navigate to Email Page
+    await page.goto('/')
+    await homePage.closeCookiePopup()
+    await homePage.closePromotionPopup()
+    await homePage.clickSignInBtn()
 
-await homePage.closePromotionPopup()
-await homePage.clickSignInBtn()
+    // Enter Email for Creating new account
+    await emailPage.enterEmail(UserDetails.emailaddress)
+    await emailPage.clickGetStartedBtn()
 
-await emailPage.enterEmail(signUpData.emailaddress)
-await emailPage.clickGetStartedBtn()
-await emailPage.waitForLoader()
+    // Create profile Page
+    await profilePage.createProfile(
+        UserDetails.firstname,
+        UserDetails.lastName,
+        UserDetails.password,
+        UserDetails.birthday
+    )
 
-await profilePage.createProfile(
-signUpData.firstname,
-signUpData.lastName,
-signUpData.password,
-signUpData.birthday
-)
+    await profilePage.clickcreateProfilebtn()
 
-await profilePage.clickcreateProfilebtn()
+    // Create Membership Page
+    await membershipPage.createMembership(
+        UserDetails.fullName,
+        UserDetails.cardNumber,
+        UserDetails.exp_date,
+        UserDetails.cvc,
+        UserDetails.zip_code,
+        UserDetails.phone_no
+    )
 
-await membershipPage.createMembership(
-signUpData.fullName,
-signUpData.cardNumber,
-signUpData.exp_date,
-signUpData.cvc,
-signUpData.zip_code,
-signUpData.phone_no
-)
-
-await membershipPage.clickacceptPolicyCheckbox()
-await membershipPage.clickcreateMembershipbtn()
+    await membershipPage.clickacceptPolicyCheckbox()
+    await membershipPage.clickcreateMembershipbtn()
 
 })
+
+

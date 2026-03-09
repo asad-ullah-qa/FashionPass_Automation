@@ -8,7 +8,6 @@ export class createProfile {
         this.password = page.locator('#password')
         this.birthday = page.locator('#birthday')
         this.createProfilebtn = page.getByRole('button', { name: 'CREATE PROFILE' })
-        
     }
 
     async createProfile(first, last, pass, dob) {
