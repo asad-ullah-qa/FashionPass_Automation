@@ -1,7 +1,7 @@
 import { test } from '../fixtures/baseTest'
 import { UserDetails } from '../Test-Data/Data'
 
-test('User Signup Flow', async ({ page, homePage, LoginPopup }) => {
+test('User Login And Logout Flow', async ({ page, homePage , MyAccount , Login  }) => {
 
     // Open home Page , close promotional popup , open loginPoup
     await page.goto('/')
@@ -10,11 +10,17 @@ test('User Signup Flow', async ({ page, homePage, LoginPopup }) => {
     await homePage.clickOnsignUpBtn()
 
     // User Login
-    await LoginPopup.enterLoginDetails(
+    await Login.enterLoginDetails(
         UserDetails.loginEmailAdress,
         UserDetails.loginPassword
     )
 
-    await LoginPopup.clickOnLoginBtn()
+    await Login.clickOnLoginBtn()
+
+     // open My account side bar
+    await MyAccount.clickOnmyAccountBtn()
+
+    // logout user
+    await MyAccount.clickOnLogoutBtn()
 })
 

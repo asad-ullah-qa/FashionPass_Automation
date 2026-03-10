@@ -3,7 +3,11 @@ import { Homepage } from '../pages/HomePage'
 import { EmailPage } from '../pages/EmailPage'
 import { createProfile } from '../pages/CreateProfilePage'
 import { membershipPage } from '../pages/MembershipPage'
-import { LoginPopup } from '../Pages/loginPopup'
+import { Login } from '../Pages/login'
+import { MyAccount } from '../Pages/SideMenu'
+import { HeaderNavBar } from '../Pages/navBar'
+import { collections } from '../Pages/collection'
+import { ProductPage } from '../Pages/productPage'
 
 export const test = base.extend({
 
@@ -23,11 +27,25 @@ export const test = base.extend({
         await use(new membershipPage(page))
     },
 
-    LoginPopup: async ({ page }, use) => {
-        await use(new LoginPopup(page))
+    Login: async ({ page }, use) => {
+        await use(new Login(page))
+    },
+
+    MyAccount: async ({ page }, use) => {
+        await use(new MyAccount(page))
+    },
+
+    Navbar: async ({ page }, use) => {
+        await use(new HeaderNavBar(page))
+    },
+
+    collections: async ({ page }, use) => {
+        await use(new collections(page))
+    },
+
+    ProductPage: async ({ page }, use) => {
+        await use(new ProductPage(page))
     }
-
-
 
 })
 

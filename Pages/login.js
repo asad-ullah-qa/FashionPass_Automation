@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
 
-export class LoginPopup {
+export class Login {
   constructor(page) {
     this.page = page
     this.loginEmail = page.locator("//input[@id='email']")
@@ -16,7 +16,5 @@ export class LoginPopup {
   async clickOnLoginBtn() {
     await this.loginBtn.click()
   }
-
-
 
 }

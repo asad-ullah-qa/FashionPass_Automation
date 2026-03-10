@@ -9,19 +9,25 @@ export class Homepage {
         this.signUpBtn = page.locator('.header_logincomp_loginBtn')
     }
 
+    // close promotional popup
     async closePromotionPopup() {
         await this.promotionPopClose.click()
     }
 
+    // close cookie popup
     async closeCookiePopup() {
         await this.cookiePopup.click()
     }
 
+    // to create account
     async clickSignInBtn() {
         await this.SignInBtn.click()
     }
 
+    // open login popup
     async clickOnsignUpBtn() {
         await this.signUpBtn.click()
     }
+
+
 }

@@ -10,7 +10,7 @@ export const UserDetails = {
     cvc: '688',
     zip_code: '12020',
     phone_no: '3345927790',
-    loginEmailAdress : 'testasad5@yopmail.com',
+    loginEmailAdress : 'testasad7@yopmail.com',
     loginPassword : 'testing'
 }
 
